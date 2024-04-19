@@ -1,0 +1,126 @@
+#include <iostream>
+#include <stdlib.h>
+#include <windows.h>
+#include <ctime>
+
+using namespace std;
+
+int elliyüzlüzar() {
+
+
+	srand(time(0));
+
+	int zar;
+	zar = rand() % 51;
+
+
+	if (zar == 0) {
+		zar++;
+	}
+
+	
+
+	return zar;
+}
+
+
+
+
+int main() {
+
+başlangıç:
+
+
+	setlocale(LC_ALL, "Turkish");
+
+
+	int sayılar[5];
+
+	cout << "Lütfen 1-50 arası 5 sayı giriniz" << endl;
+
+
+
+	for (int i = 0;i < 5;i++) {
+
+	sayıgir:
+
+
+		cin >> sayılar[i];
+
+		if (sayılar[i] < 1 || sayılar[i]>50) {
+			cout << "Girdiğinz sayı sınır içerisinde değil." << endl;
+			goto sayıgir;
+		}
+
+		if (sayılar[i]==sayılar[i-1] || sayılar[i]==sayılar[i-2]||sayılar[i]==sayılar[i-3]||sayılar[i]==sayılar[i-4]) {
+			cout << "Aynı sayıları seçemezsiniz" << endl;
+			goto sayıgir;
+		}
+
+
+
+	}
+
+oyun:
+
+	Sleep(500);
+
+	system("cls");
+
+	cout << "Sayılarınız: " << sayılar[0] << " - " << sayılar[1] << " - " << sayılar[2] << " - " << sayılar[3] << " - " << sayılar[4] << endl;
+
+
+	
+
+
+	cout << "Zar atmak için z/Z tuşuna basın" << endl;
+	char z;
+	cin >> z;
+	if (z == 'z' || z == 'Z') {
+		goto zarat;
+	}
+
+
+zarat:
+
+
+	cout << "50 yüzlü zar 1 kere atıldı; " << elliyüzlüzar() << " geldi." << endl;
+
+
+
+	int i = 0;
+
+	while (i <5) {
+
+		if (elliyüzlüzar() == sayılar[i]) {
+
+			sayılar[i] = 0;
+
+		}
+
+		i++;
+
+
+		
+
+
+
+	}
+
+	if (sayılar[0] == 0 && sayılar[1] == 0 && sayılar[2] == 0 && sayılar[3] == 0 && sayılar[4] == 0) {
+		goto bitti;
+	}
+	
+
+	goto oyun;
+
+
+
+bitti:
+
+	cout << "Tebrikler oyunu kazandınız" << endl;
+
+
+
+	system("pause");
+}
