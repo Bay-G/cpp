@@ -1,0 +1,48 @@
+#include <iostream>
+
+
+using namespace std;
+
+
+
+int main() {
+
+	int dizi[] = { 9,4,24,85,22,12,1 };
+	int tmp;
+
+	for (int i = 0;i < 7;i++) {
+
+		for (int j = 6;j > i;j--) {
+
+			if (dizi[j - 1] > dizi[j]) {
+
+				tmp = dizi[j - 1];
+				dizi[j - 1] = dizi[j];
+				dizi[j] = tmp;
+
+
+			}
+
+
+
+
+		}
+
+
+
+
+	}
+	
+	
+	for (int i = 0;i < 7;i++) {
+		cout << dizi[i] << " ";
+	}
+
+
+
+
+
+    system("pause");
+}
+
+

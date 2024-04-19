@@ -1,0 +1,230 @@
+#include <iostream>
+#define MAX 200
+#include <windows.h>
+#include <ctime>
+
+
+
+
+
+
+
+using namespace std;
+
+
+// masadaki totel para adminin kazanmak istediği miktarın altına düşerse şans azalır
+// yatırılan para masanın büyük kısmını oluşturuyorsa şans artar
+// win/loss dengesi
+
+
+
+
+
+
+class oyun {
+
+
+public:
+
+	int toplampara=10000, şans = 0, kazanma = 0, yenilme = 0;
+	int ödeme = toplampara / 10;
+	
+
+
+
+	int para;
+
+
+
+
+	void zar() {
+
+		if (şans == 0) {
+
+
+
+			system("cls");
+
+
+			srand(time(0));
+
+
+			int masa[] = { 1,2,3,4,5,6 };
+			int oyuncu[] = { 1,2,3,4,5,6 };
+
+			int i = rand() % 6;
+
+			int ii = rand() % 6;
+
+			if (i < 0 || i >6) {
+
+				i = rand() % 6;
+
+
+			}
+
+
+			else if (ii < 0 || ii >6) {
+				ii = rand() % 6;
+			}
+
+
+			cout << "MASA: " << masa[i] << endl;
+			cout << "OYUNCU: " << oyuncu[ii] << endl;
+
+			if (oyuncu[ii] > masa[i]) {
+				cout << "Kazandınız!";
+				kazanma++;
+
+				
+
+
+
+			}
+
+
+			Sleep(999);
+
+		}
+
+		else if (şans == 1) {
+			system("cls");
+
+
+			srand(time(0));
+
+
+			int masa[] = { 1,2,3,4,5,6 };
+			int oyuncu[] = { 1,2,3,4,5,6 };
+
+			int i = rand() % 6;
+
+			int ii = rand() % 6;
+
+			if (ii < i) {
+
+				if (i >= 1) {
+					i--;
+				}
+
+
+				if (ii <= 5) {
+					ii++;
+				}
+
+			}
+
+
+			cout << "MASA: " << masa[i] << endl;
+			cout << "OYUNCU: " << oyuncu[ii] << endl;
+
+
+			if (oyuncu[ii] > masa[i]) {
+				cout << "Kazandınız!";
+				kazanma++;
+
+				para += ödeme;
+				toplampara -= ödeme;
+
+
+			}
+
+			Sleep(999);
+		}
+
+
+		
+
+
+
+
+	}
+
+
+	void oyuncupanel(int bakiye) {
+
+	loop:
+
+
+		system("cls");
+		cout << "Ortadaki para: " << toplampara << endl;
+		cout << "Paranız: " << bakiye << endl;
+		cout << "Zar Atmak İçin Bir Tuşa Basın" << endl;
+		system("pause");
+		
+		
+
+		if ((bakiye * 100) / (bakiye + toplampara) >= 35) {
+			şans++;
+			
+		}
+
+		
+
+
+		zar();
+
+	 
+		goto loop;
+
+	}
+
+
+
+	void adminpanel() {
+		
+		system("cls");
+		
+
+
+	}
+
+
+
+}nesne;
+
+
+
+
+
+
+int main() {
+
+	setlocale(LC_ALL, "Turkish");
+
+
+	system("cls");
+	cout << "1- Admin Paneli" << endl << "2- Oyuncu Paneli" << endl;
+	int seçim;
+	cout << "> ";
+	cin >> seçim;
+
+	
+
+	switch (seçim) {
+	case 1:  nesne.adminpanel();
+		
+
+	case 2:
+	asd:
+
+		system("cls");
+		cout << "Bakiye yatırın" << endl;
+		int a;
+		cin >> a;
+
+		if (a <= 0) {
+			goto asd;
+		}
+
+		nesne.oyuncupanel(a);
+
+	default:
+		main();
+
+	}
+
+
+
+
+}

@@ -1,0 +1,65 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+int main() {
+main:
+	system("cls");
+
+	//tanımlamalar
+
+	int mt[10][10];
+	char bir[10][10];
+	char sifir[10][10];
+	char yildiz[10][10];
+	int x, y;
+
+	//mayınları oluşturma
+
+	for (int i = 1;i <= 10;i++) {
+		for (int j = 1;j <= 10;j++) {
+			mt[i][j] = rand() % 2;
+		}
+	}
+
+	//mayınları saklama
+
+	for (int i = 1;i <= 10;i++) {
+		for (int j = 1;j <= 10;j++) {
+			yildiz[i][j] = '*';
+			cout << yildiz[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	//loop kısmı ve oynanış
+
+tekrar:
+	cout << "satir girin" << endl;
+	cin >> x;
+	cout << "sutun girin" << endl;
+	cin >> y;
+	system("cls");
+
+	if (mt[x][y] == 0) {
+		cout << "oyun bitti" << endl;
+
+	}
+
+	if (mt[x][y] == 1) {
+		bir[x][y] = '1';
+		yildiz[x][y] = bir[x][y];
+
+		for (int i = 1;i <= 10;i++) {
+			for (int j = 1;j <= 10;j++) {
+				cout << yildiz[i][j] << " ";
+			}
+			cout << endl;
+		}
+		goto tekrar;
+	}
+bitis:
+	cout << "tekrar baslamak icin 'space' tusuna basin" << endl;
+	system("pause");
+	goto main;
+}

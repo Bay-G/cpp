@@ -1,0 +1,231 @@
+#include <iostream>
+#include <ctime>
+#include <stdlib.h>
+#include <windows.h>
+#define MAX 100
+
+using namespace std;
+
+
+
+class araç {
+
+public:
+
+	string plaka, ad, soyad, tel;
+
+	time_t giriş = 0;
+
+
+}araba[MAX];
+
+
+class otopark {
+
+public:
+
+	string görevli_id, görevli_şifre;
+	int gelir,i;
+
+	otopark(string görevli_id, string görevli_şifre) {
+
+		this->görevli_id = görevli_id;
+		this->görevli_şifre = görevli_şifre;
+		gelir = 0;
+		i = -1;
+	}
+
+
+	void menu() {
+	e2:
+		system("cls");
+		int seçim;
+		cout <<  endl;
+		cout << "*****OTOPARK UYGULAMASI*****" << endl << endl;
+		cout << "1- Yeni araç girişi" << endl;
+		cout << "2- Araç çıkışı" << endl;
+		cout << "3- Araçları listele" << endl;
+		cout << "4- Rapor" << endl;
+		cout << "5- Çıkış" << endl;
+
+
+		cout << "Yapmak istediğiniz işlemi sesçin: ";
+	
+
+		cin >> seçim;
+
+		switch (seçim)
+		{
+		case 1: yeni();
+		case 2: çıkar();
+		case 3: listele();
+		case 4: rapor();
+		case 5: exit(0);
+		default:
+			
+			system("cls");
+			cout << "Hatalı seçim" << endl;
+			Sleep(999);
+			system("cls");
+			goto e2;
+			break;
+		}
+	}
+
+
+	void yeni() {
+
+		system("cls");
+
+		i++;
+		cout << "Araç sahibinin adı: ";
+		cin >> araba[i].ad;
+		cout << "Araç sahibinin soyadı: ";
+		cin >> araba[i].soyad;
+		cout << "Araç sahibinin telefonu: ";
+		cin >> araba[i].tel;
+		cout << "Aracın plakası: ";
+		cin >> araba[i].plaka;
+
+		time(&araba[i].giriş);
+
+		system("cls");
+		cout << "İşlem başarılı. Menüye dönmek için herhangi bir tuşa basın" << endl;
+		system("pause");
+
+		menu();
+	}
+
+
+	void çıkar() {
+
+
+		bool buldu = false;
+		string plk;
+		int j = 0, k;
+		double süre;
+		int saat;
+		time_t çıkış;
+		time(&çıkış);
+
+		cout << "Çıkış yapacak aracın plakasını girin:  ";
+		cin >> plk;
+
+		while (j <= i) {
+			if (araba[j].plaka == plk) {
+				süre = difftime(çıkış, araba[j].giriş);
+
+				for (k = j;k <= i;k++) {
+					araba[k] = araba[k + 1];
+
+
+				}
+				i--;
+				buldu = true; break;
+			}
+			j++;
+		}
+		if (buldu == false) {
+
+			cout << "Girilen plaka bulunamadı" << endl;
+			menu();
+
+		}
+
+		süre = süre / 3600;
+		saat = ceil(süre); // ceil fonksiyonu yuvarlama işlemi yapar
+
+		cout << "Ödenecek ücret: " << saat * 5 << " TL" << endl;
+
+		gelir += saat * 5;
+		menu();
+
+	}
+
+	void listele() {
+		system("cls");
+
+		for (int j = 0;j <= i;j++) {
+			cout << araba[j].plaka << endl;
+		}
+		system("pause");
+		system("cls");
+		menu();
+
+	}
+
+
+	void rapor() {
+
+		system("cls");
+
+		cout << "Şuan ki gelir: " << gelir << " TL" << endl;
+		system("pause");
+		system("cls");
+		menu();
+
+	}
+
+
+
+
+
+
+
+};
+
+
+
+
+
+int main() {
+
+	setlocale(LC_ALL, "Turkish");
+
+	string ad, şifre;
+
+	otopark çalışan("emre", "0000");
+
+	int a = 1;
+
+e1:
+
+	while (a) {
+		cout << "Kullanıcı adınızı giriniz: ";
+		cin >> ad;
+
+		cout << "Şifreyi giriniz: ";
+		cin >> şifre;
+
+		if (çalışan.görevli_id == ad && çalışan.görevli_şifre==şifre) {
+
+			a = 0;
+
+			system("cls");
+			
+
+			cout << "Giriş başarılı" << endl;
+			Sleep(999);
+			system("cls");
+			çalışan.menu();
+
+
+		}
+
+		else {
+
+			system("cls");
+			cout << "Tekrar deneyin" << endl;
+			Sleep(999);
+			system("cls");
+			goto e1;
+
+		}
+	}
+
+
+
+
+
+	
+}

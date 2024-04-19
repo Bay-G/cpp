@@ -1,0 +1,232 @@
+#include <iostream>
+#include <windows.h>
+#define MAX 200
+
+using namespace std;
+
+
+/*
+
+kişi ad
+kişi soyad
+koltuk no
+yakıt ekle
+yakıt miktarı
+koltuk sayısı
+boş koltuk
+dolu koltuk
+toplam koltuk =100
+yakıt kapasite =200
+
+
+
+*/
+
+
+
+class Kişiler {
+
+public:
+
+	string ad, soyad;
+	int koltuk_num = 0;
+
+
+}Kişi[MAX];
+
+
+
+
+class Uçak {
+
+private:
+	int Yakıt_Kapasitesi, Koltuk_Sayısı;
+	
+
+
+public:
+
+	int i = -1;
+	
+	
+
+Uçak(){
+
+Yakıt_Kapasitesi=200;
+Koltuk_Sayısı=50;
+
+}
+
+	
+
+	void Yakıt_Doldur(int Miktar) {
+
+		system("cls");
+
+
+
+	}
+
+
+	void Yakıt_Göster() {
+		system("cls");
+
+	}
+
+	void Koltuk_Artı_Bir() {
+		system("cls");
+
+	}
+
+
+	void Koltuk_Say() {
+		system("cls");
+
+		cout << Koltuk_Sayısı;
+		system("puase");
+
+	}
+
+
+	void Boş_Koltuk_Göster() {
+		system("cls");
+
+	}
+
+	void Koltuk_Listele() {
+		system("cls");
+
+		for (int j = 0;j <= i;j++) {
+
+			cout << Kişi[j].ad << " " << Kişi[j].soyad << "  " << Kişi[j].koltuk_num;
+			cout << endl << "---------" << endl;
+
+		}
+
+		system("pause");
+		Menü();
+
+	}
+
+
+
+	void Rezerve_Et(int Koltuk_No, string Ad, string Soyad) {
+
+		
+
+		if (i == 0) {
+			cout << "Koltuğunuz Rezerve Edilmiştir";
+			Sleep(999);
+			
+			Menü();
+		}
+
+		
+			for (int asd = 1;asd <= i;asd++) {
+
+				if (Kişi[i].koltuk_num == Kişi[i - asd].koltuk_num) {
+
+					cout << "Bu Koltuk "<<Kişi[i-asd].ad<<" "<<Kişi[i-asd].soyad<<" Tarafından Rezerve Edilmiş";
+					Sleep(2000);
+					i--;
+					Menü();
+
+				}
+
+				
+					
+				
+
+			}
+		
+
+
+			cout << "Koltuğunuz Rezerve Edilmiştir";
+			Sleep(999);
+			Menü();
+
+		
+
+		
+
+	}
+
+	void Menü() {
+		
+
+		system("cls");
+
+		cout << "[1] Yakıt Ekle" << endl << "[2] Yakıtı Göster" << endl << "[3] Koltuk Ekle" << endl << "[4] Koltuk Sayısı" << endl;
+		cout << "[5] Boş Koltukları Göster" << endl << "[6] Koltukları Listele" << endl << "[7] Rezerve Et" << endl << "[0] Çıkış" << endl;
+
+		cout << endl << ">";
+
+		int Seçim;
+		cin >> Seçim;
+
+		switch (Seçim)
+		{
+		case 1: 
+			system("cls");
+			cout << "Eklenecek Miktarı Girin" << endl;
+			cout << ">";
+			cin >> Seçim;
+			Yakıt_Doldur(Seçim);
+
+
+		case 2: Yakıt_Göster();
+		case 3: Koltuk_Artı_Bir();
+		case 4: Koltuk_Say();
+		case 5: Boş_Koltuk_Göster();
+		case 6: Koltuk_Listele();
+		case 7:
+			system("cls");
+			i++;
+			
+			cout << "Ad: ";
+			cin >> Kişi[i].ad;
+
+			cout << "Soyad: ";
+			cin >> Kişi[i].soyad;
+
+			cout << "Koltuk numarası: ";
+			cin >> Kişi[i].koltuk_num;
+
+			Rezerve_Et(Kişi[i].koltuk_num, Kişi[i].ad, Kişi[i].soyad);
+
+
+		case 0: exit(0);
+
+		default:
+			system("cls");
+			cout << "Böyle Bir Seçenek Bulunmamaktadır" << endl;
+			Sleep(999);
+			Menü();
+
+
+			break;
+		}
+
+
+	}
+
+
+
+}NESNE;
+
+
+
+
+
+
+
+
+
+int main() {
+
+	setlocale(LC_ALL, "Turkish");
+	NESNE.Menü();
+
+
+
+}

@@ -1,0 +1,177 @@
+#include <iostream>
+#define MAX 200
+
+using namespace std;
+
+
+
+
+class kişiler {
+private:
+
+
+
+public:
+
+	string ad, soyad;
+	int tc, no;
+
+
+
+
+
+}kişi[MAX];
+
+class Otel {
+
+private:
+
+
+
+public:
+
+	int odano[MAX], ücret[MAX], i = 0;
+	int j = 0, k;
+
+	void odaişlem() {
+		system("cls");
+
+		cout << "1- Oda Ekle" << endl << "2- Oda Sil" << endl << "3- Odaları Listele" << endl << "0- Üst Menü" << endl;
+		cout << endl << ">";
+		int seçim;
+		cin >> seçim;
+		switch (seçim)
+		{
+		case 1: odaekle();
+		case 2: odasil();
+		case 3: odalistele();
+		case 0: menu();
+		default:
+			odaişlem();
+			break;
+		}
+
+
+
+	}
+
+	//
+	
+	void odaekle() {
+		system("cls");
+
+		cout << "4 haneli oda numarasını girin: ";
+		cin >> odano[i];
+
+
+
+		for (int j = 1;j <= i;j++) {
+			if (odano[i] == odano[i-j]) {
+				odaekle();
+			}
+		}
+
+
+		if (odano[i] < 1000 || odano[i]>9999) {
+			odaekle();
+		}
+	etiket:
+
+		cout << "Oda ücretini girin: ";
+		cin >> ücret[i];
+		if (ücret[i] <= 0) {
+			system("cls");
+			goto etiket;
+		}
+
+		i++;
+		odaişlem();
+
+	}
+
+	void odasil() {
+		system("cls");
+		cout << "Oda numarasını girin: ";
+		int odano2;
+		cin >> odano2;
+
+		for (int a = 0;a <= i;a++) {
+			if (odano2 == odano[a]) {
+				for (int k = j;k <= i;k++) {
+					odano[k] = odano[k + 1];
+					ücret[k] = ücret[k + 1];
+				}
+				i--;
+				odaişlem();
+			}
+
+			
+
+		}
+	
+		cout << "Böyle bir oda bulunamadı" << endl;
+		system("pause");
+		odaişlem();
+
+	}
+
+	void odalistele() {
+		system("cls");
+
+		cout << "Oda Numarası\t" << "Ücreti" << endl << endl;
+
+		for (int a = 0;a < i; a++) {
+			cout << odano[a] << "\t\t" << ücret[a] << endl;
+		}
+
+
+		system("pause");
+		odaişlem();
+
+	}
+	//
+	void müşteriişlem() {
+
+	}
+
+	void odakayıtişlem() {
+
+	}
+
+
+	void menu() {
+		system("cls");
+
+
+		cout<<"1- Oda İşlemleri"<<endl<<"2- Müşteri İşlemleri"<<endl<<"3- Oda Kayıt İşlemleri"<<endl<<"0- Çıkış"<<endl;
+		cout << endl << ">";
+		int seçim;
+		cin >> seçim;
+		switch (seçim)
+		{
+		case 1: odaişlem();
+		case 2: müşteriişlem();
+		case 3: odakayıtişlem();
+		case 0: exit(0);
+		default:
+			menu();
+			break;
+		}
+
+
+
+	}
+
+
+}nesne;
+
+
+
+
+
+
+int main() {
+	setlocale(LC_ALL, "Turkish");
+	nesne.menu();
+
+}

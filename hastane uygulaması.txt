@@ -1,0 +1,499 @@
+
+
+#include <iostream>
+#include <windows.h>
+
+#define MAX 200
+
+using namespace std;
+
+
+
+class hasta {
+public:
+
+	string ad, soyad, kan, telefon, hasta_no;
+
+
+
+
+}kişi[MAX], adam[MAX];
+
+
+class hastane {
+
+public:
+
+
+
+	bool check_number(string str) {
+		for (int i = 0; i < str.length(); i++)
+			if (isdigit(str[i]) == false)
+				return false;
+		return true;
+	}
+
+
+	int i = -1;
+	int t = 0;
+
+	void menu() {
+
+	a:
+		system("cls");
+
+		cout << "[1] Hasta Kayıt" << endl;
+		cout << "[2] Hasta Taburcu" << endl;
+		cout << "[3] Yatan Hasta Listesi" << endl;
+		cout << "[4] Taburcu Hasta Listesi" << endl;
+		cout << "[0] Çıkış" << endl;
+
+		cout << endl << ">";
+
+		int seçim;
+		cin >> seçim;
+
+		
+
+
+
+
+
+
+
+		switch (seçim)
+		{
+		case 1:kayıt();
+		case 2:taburcu();
+		case 3:hliste();
+		case 4:tliste();
+		case 0: ÇIKIŞ();
+		default:
+
+			system("cls");
+			cout << "Hatalı Seçim" << endl;
+			Sleep(999);
+			menu();
+			
+			break;
+		}
+
+
+
+	}
+
+
+	void ÇIKIŞ() {
+		exit(0);
+	}
+
+
+	void kayıt() {
+		system("cls");
+
+
+		i++;
+	
+	asdasd:
+
+		system("cls");
+
+		cout << "Hastanın adı: ";
+		cin >> kişi[i].ad;
+
+		if (check_number(kişi[i].ad)) {
+
+			system("cls");
+			cout << "lütfen bir kelime girin" << endl;
+			Sleep(999);
+			goto asdasd;
+
+
+		}
+		
+	asdasda:
+
+		system("cls");
+
+		cout << "Hastanın soyadı: ";
+		cin >> kişi[i].soyad;
+
+
+		if (check_number(kişi[i].soyad)) {
+
+			system("cls");
+			cout << "lütfen bir kelime girin" << endl;
+			Sleep(999);
+			goto asdasda;
+
+
+		}
+
+
+
+
+	asd:
+
+
+		cout << "Hastanın kan grubu" << endl;
+		cout << "[1] A" << endl << "[2] B" << endl << "[3] AB" <<endl<< "[4] 0" << endl;
+
+		int a;
+		cin >> a;
+		string pn;
+
+
+		switch (a)
+		{
+		case 1:
+			
+		dsa:
+
+			
+			cout << "(Pozitif , Negatif) : ";
+			cin >> pn;
+
+			if (pn == "Pozitif" || pn == "pozitif" || pn == "POZİTİF" || pn == "p" || pn == "P") {
+				kişi[i].kan = "A+";
+				goto bla;
+			}
+
+			else if (pn == "Negatif" || pn == "negatif" || pn == "NEGATİF" || pn == "n" || pn == "N") {
+				kişi[i].kan = "A-";
+				goto bla;
+			}
+
+			else {
+				system("cls");
+				cout << "Hatalı seçim" << endl;
+				Sleep(999);
+				goto dsa;
+			}
+
+
+		case 2: 
+		dsa1:
+
+			cout << "(Pozitif , Negatif) : ";
+
+			cin >> pn;
+
+			if (pn == "Pozitif" || pn == "pozitif" || pn == "POZİTİF" || pn == "p" || pn == "P") {
+				kişi[i].kan = "B+";
+				goto bla;
+			}
+
+			else if (pn == "Negatif" || pn == "negatif" || pn == "NEGATİF" || pn == "n" || pn == "N") {
+				kişi[i].kan = "B-";
+				goto bla;
+			}
+
+			else {
+				system("cls");
+				cout << "Hatalı seçim" << endl;
+				Sleep(999);
+				goto dsa1;
+			}
+
+
+		case 3: 
+			
+		dsa2:
+
+
+			cout << "(Pozitif , Negatif) : ";
+
+			cin >> pn;
+
+			if (pn == "Pozitif" || pn == "pozitif" || pn == "POZİTİF" || pn == "p" || pn == "P") {
+				kişi[i].kan = "AB+";
+				goto bla;
+			}
+
+			else if (pn == "Negatif" || pn == "negatif" || pn == "NEGATİF" || pn == "n" || pn == "N") {
+				kişi[i].kan = "AB-";
+				goto bla;
+			}
+
+			else {
+				system("cls");
+				cout << "Hatalı seçim" << endl;
+				Sleep(999);
+				goto dsa2;
+			}
+
+
+		case 4:
+			
+		dsa3:
+
+			
+			
+			cout << "(Pozitif , Negatif) : ";
+
+
+
+			cin >> pn;
+
+			if (pn == "Pozitif" || pn == "pozitif" || pn == "POZİTİF" || pn == "p" || pn == "P") {
+				kişi[i].kan = "0+";
+				goto bla;
+			}
+
+			else if (pn == "Negatif" || pn == "negatif" || pn == "NEGATİF" || pn == "n" || pn == "N") {
+				kişi[i].kan = "0-";
+				goto bla;
+			}
+
+			else {
+				system("cls");
+				cout << "Hatalı seçim" << endl;
+				Sleep(999);
+				goto dsa3;
+			}
+
+
+
+		default:
+			system("cls");
+			cout << "Hatalı seçim" << endl;
+			Sleep(999);
+			goto asd;
+			break;
+		}
+
+
+			
+
+
+
+	bla:
+
+		
+		system("cls");
+
+		cout << "Hastanın telefon numarası: ";
+		cin >> kişi[i].telefon;
+
+		for (int asdasda = 1;asdasda <= i;asdasda++) {
+
+			if (kişi[i].telefon == kişi[i - asdasda].telefon) {
+
+
+				system("cls");
+				cout << "Farklı Kişilerin Telefon Numaraları Aynı Olamaz" << endl;
+				Sleep(999);
+
+
+				goto bla;
+			}
+
+		}
+
+
+
+
+
+
+		if (!check_number(kişi[i].telefon)) {
+
+			system("cls");
+			cout << "lütfen bir numara girin" << endl;
+			Sleep(999);
+			goto bla;
+
+
+		}
+
+		e1e1:
+
+		system("cls");
+		cout << "Hastanın hasta numarası: ";
+		cin >> kişi[i].hasta_no;
+
+
+		for (int asdasd = 1;asdasd <= i;asdasd++) {
+
+			if (kişi[i].hasta_no == kişi[i - asdasd].hasta_no) {
+
+
+				system("cls");
+				cout << "Farklı Hastalara Aynı Numaraları Veremezsiniz" << endl;
+				Sleep(999);
+
+
+				goto e1e1;
+			}
+
+		}
+
+
+		
+
+		
+
+		if (!check_number(kişi[i].hasta_no)) {
+
+			system("cls");
+			cout << "lütfen bir numara girin" << endl;
+			Sleep(999);
+			goto e1e1;
+
+
+		}
+
+
+
+		system("cls");
+		cout << "İşlem başarılı. Menüye dönmek için herhangi bir tuşa basın" << endl;
+		system("pause");
+
+		menu();
+
+	}
+
+	void taburcu() {
+		system("cls");
+
+		int j = 0, k;
+		string num;
+		bool tf = false;
+
+	
+
+		cout << "Taburcu edilecek hasta numarasını girin: ";
+		cin >> num;
+
+
+		if (!check_number(num)) {
+			system("cls");
+			cout << "Lütfen Bir Numara Girin" << endl;
+			Sleep(999);
+			taburcu();
+		}
+
+		while (j <= i) {
+
+			if (kişi[j].hasta_no == num) {
+
+				adam[t].ad = kişi[j].ad;
+				adam[t].soyad = kişi[j].soyad;
+				t++;
+
+
+				for (k = j;k <= i;k++) {
+					kişi[k] = kişi[k + 1];
+
+
+
+				}
+
+
+
+				i--;
+				tf = true;
+				system("cls");
+
+
+
+
+
+				cout << "Hastayı Taburcu Ettiniz" << endl;
+				Sleep(999);
+				menu();
+			}
+
+			j++;
+		}
+
+		if (tf == false) {
+			system("cls");
+			cout << "Böyle bir hasta bulunamadı" << endl;
+			Sleep(999);
+			menu();
+		}
+
+
+	}
+
+	void hliste() {
+		system("cls");
+
+		if (i >= 0) {
+			for (int j = 0;j <= i;j++) {
+
+
+
+				cout << kişi[j].ad << " " << kişi[j].soyad << " " << kişi[j].kan << endl;
+				cout << kişi[j].telefon << endl;
+				cout << kişi[j].hasta_no << endl;
+				cout << "-----------------------------------------" << endl << endl;
+			}
+
+			cout << endl << "menüye dönmek için herhangi bir tuşa basın" << endl;
+			system("pause");
+			menu();
+
+		}
+
+		else {
+			system("cls");
+			cout << "Kayıtlı hasta bulunamadı" << endl;
+			Sleep(999);
+			menu();
+		}
+
+
+	}
+
+	void tliste() {
+		system("cls");
+
+		if (t > 0) {
+
+			for (int a = 0;a < t;a++) {
+
+				cout << "ismi: " << adam[a].ad << endl;
+				cout << "Soy ismi: " << adam[a].soyad << endl;
+
+				cout << endl << "----------------------------------" << endl;
+
+
+			}
+			cout << endl << "menüye dönmek için herhangi bir tuşa basın" << endl;
+			system("pause");
+			menu();
+
+		}
+
+
+		else {
+			system("cls");
+			cout << "Taburcu edilmiş hasta yok";
+			Sleep(999);
+			menu();
+
+
+		}
+
+
+	}
+
+
+
+
+
+}h;
+
+
+
+
+int main() {
+
+	setlocale(LC_ALL, "Turkish");
+
+	h.menu();
+
+
+}
+

@@ -1,0 +1,50 @@
+#include <iostream>
+#include <fstream> // Dosya işlemleri için gerekli olan başlık dosyası
+using namespace std;
+
+int main() {
+    // Dosyayı açın veya oluşturun
+    ofstream dosya("cikti.txt");
+
+    if (!dosya) {
+        cout << "Dosya açma hatası!" << endl;
+        return 1;
+    }
+
+    char karakterDizisi1[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789";
+    char karakterDizisi2[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789";
+    char karakterDizisi3[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789";
+    char karakterDizisi4[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789";
+    char karakterDizisi5[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789";
+    char karakterDizisi6[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789";
+    char karakterDizisi7[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789";
+    char karakterDizisi8[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789";
+
+    for (int i1 = 0; karakterDizisi1[i1] != '\0'; ++i1) {
+        for (int i2 = 0; karakterDizisi2[i2] != '\0'; ++i2) {
+            for (int i3 = 0; karakterDizisi3[i3] != '\0'; ++i3) {
+                for (int i4 = 0; karakterDizisi4[i4] != '\0'; ++i4) {
+                    for (int i5 = 0; karakterDizisi5[i5] != '\0'; ++i5) {
+                        for (int i6 = 0; karakterDizisi6[i6] != '\0'; ++i6) {
+                            for (int i7 = 0; karakterDizisi7[i7] != '\0'; ++i7) {
+                                for (int i8 = 0; karakterDizisi8[i8] != '\0'; ++i8) {
+                                    // Dosyaya yaz
+                                    dosya << karakterDizisi1[i1] << karakterDizisi2[i2] << karakterDizisi3[i3] << karakterDizisi4[i4]
+                                        << karakterDizisi5[i5] << karakterDizisi6[i6] << karakterDizisi7[i7] << karakterDizisi8[i8] << endl;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Dosyayı kapat
+    dosya.close();
+
+    cout << "Veriler dosyaya yazıldı: cikti.txt" << endl;
+
+    return 0;
+}
+
